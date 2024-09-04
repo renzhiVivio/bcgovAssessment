@@ -31,9 +31,7 @@ export default function Home() {
       isCompleted: false,
       isUrgent: false,
     };
-
-    todos.push(newTodo);
-    setTodos(todos);
+    setTodos([newTodo, ...todos]);
   };
 
   const deleteTodo = (id: number) => {
