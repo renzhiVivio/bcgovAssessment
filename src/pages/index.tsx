@@ -50,24 +50,20 @@ export default function Home() {
     setTodos(updatedTodos);
   }, [setTodos]);
 
-  const displayTodoList = (todoList:Todo[]) => {
+  const displayTodoList = (todoList: Todo[]) => {
     return (
       <TodoList
         todos={todoList}
-        deleteTodo={deleteTodo} 
-        toggleComplete={(id) => toggleProperty(id, 'isCompleted')} 
-        toggleUrgent={(id) => toggleProperty(id, 'isUrgent')} 
+        deleteTodo={deleteTodo}
+        toggleComplete={(id) => toggleProperty(id, 'isCompleted')}
+        toggleUrgent={(id) => toggleProperty(id, 'isUrgent')}
       />
     );
   };
 
   const displayTodos = (displayUrgent: boolean) => {
     return displayTodoList(todos.filter((x) => {
-      if (displayUrgent) {
-        return !x.isCompleted && x.isUrgent === displayUrgent;
-      } else {
-        return !x.isCompleted && x.isUrgent !== displayUrgent;
-      }
+      return !x.isCompleted && x.isUrgent === displayUrgent;
     }));
   };
 
@@ -86,7 +82,7 @@ export default function Home() {
 
       <div className="Home">
         <Banner />
-        <AddTodoForm addTodo={AddTodo}/>
+        <AddTodoForm addTodo={AddTodo} />
         {displayTodos(true)}
         {displayTodos(false)}
         {displayComplete()}
